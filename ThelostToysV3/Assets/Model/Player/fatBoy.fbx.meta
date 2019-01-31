@@ -1,0 +1,456 @@
+fileFormatVersion: 2
+guid: 467c7bc80d0cfdc4ca58101d063f91b9
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: boy:back
+    100002: boy:group
+    100004: boy:group1
+    100006: boy:joint1
+    100008: boy:joint10
+    100010: boy:joint11
+    100012: boy:joint12
+    100014: boy:joint13
+    100016: boy:joint14
+    100018: boy:joint15
+    100020: boy:joint16
+    100022: boy:joint17
+    100024: boy:joint18
+    100026: boy:joint19
+    100028: boy:joint2
+    100030: boy:joint20
+    100032: boy:joint21
+    100034: boy:joint22
+    100036: boy:joint23
+    100038: boy:joint24
+    100040: boy:joint25
+    100042: boy:joint26
+    100044: boy:joint27
+    100046: boy:joint28
+    100048: boy:joint29
+    100050: boy:joint3
+    100052: boy:joint30
+    100054: boy:joint31
+    100056: boy:joint32
+    100058: boy:joint33
+    100060: boy:joint34
+    100062: boy:joint35
+    100064: boy:joint36
+    100066: boy:joint37
+    100068: boy:joint38
+    100070: boy:joint39
+    100072: boy:joint4
+    100074: boy:joint40
+    100076: boy:joint41
+    100078: boy:joint5
+    100080: boy:joint6
+    100082: boy:joint7
+    100084: boy:joint8
+    100086: boy:joint9
+    100088: boy:pasted__group
+    100090: boy:polySurface1
+    100092: //RootNode
+    400000: boy:back
+    400002: boy:group
+    400004: boy:group1
+    400006: boy:joint1
+    400008: boy:joint10
+    400010: boy:joint11
+    400012: boy:joint12
+    400014: boy:joint13
+    400016: boy:joint14
+    400018: boy:joint15
+    400020: boy:joint16
+    400022: boy:joint17
+    400024: boy:joint18
+    400026: boy:joint19
+    400028: boy:joint2
+    400030: boy:joint20
+    400032: boy:joint21
+    400034: boy:joint22
+    400036: boy:joint23
+    400038: boy:joint24
+    400040: boy:joint25
+    400042: boy:joint26
+    400044: boy:joint27
+    400046: boy:joint28
+    400048: boy:joint29
+    400050: boy:joint3
+    400052: boy:joint30
+    400054: boy:joint31
+    400056: boy:joint32
+    400058: boy:joint33
+    400060: boy:joint34
+    400062: boy:joint35
+    400064: boy:joint36
+    400066: boy:joint37
+    400068: boy:joint38
+    400070: boy:joint39
+    400072: boy:joint4
+    400074: boy:joint40
+    400076: boy:joint41
+    400078: boy:joint5
+    400080: boy:joint6
+    400082: boy:joint7
+    400084: boy:joint8
+    400086: boy:joint9
+    400088: boy:pasted__group
+    400090: boy:polySurface1
+    400092: //RootNode
+    2000000: boy:back
+    2100000: lambert1
+    4300000: boy:polySurface1
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: boy:polySurface1
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftUpperLeg' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human:
+    - boneName: boy:joint33
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: boy:joint32
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: boy:joint1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: boy:joint1 (1)
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: fatBoy(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:polySurface1
+      parentName: fatBoy(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:group
+      parentName: fatBoy(Clone)
+      position: {x: 0.008150957, y: 0.41511357, z: 0.15628958}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:group1
+      parentName: fatBoy(Clone)
+      position: {x: 0.008150957, y: 0.41511357, z: 0.48204848}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:pasted__group
+      parentName: boy:group1
+      position: {x: -1.4210854e-16, y: 7.105427e-17, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:back
+      parentName: fatBoy(Clone)
+      position: {x: -0.04151904, y: 0.4051385, z: -10.000999}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint1
+      parentName: fatBoy(Clone)
+      position: {x: 0.00045543205, y: 0.5919614, z: -0.033944443}
+      rotation: {x: -0.6985369, y: 0.7155741, z: 4.3816273e-17, w: -4.2773046e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint2
+      parentName: boy:joint1
+      position: {x: -0.0804152, y: -1.8596234e-17, z: -2.1873766e-33}
+      rotation: {x: 0, y: -0, z: -0.0070121237, w: 0.99997544}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint3
+      parentName: boy:joint2
+      position: {x: -0.18298158, y: 5.930522e-16, z: 0}
+      rotation: {x: -0.7035374, y: 0.71065825, z: 4.351527e-17, w: -4.3079242e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint4
+      parentName: boy:joint1
+      position: {x: 0.0015270552, y: -0.14421333, z: 0.03987969}
+      rotation: {x: 0, y: 0, z: 0.71107095, w: 0.7031203}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint5
+      parentName: boy:joint4
+      position: {x: -0.13244973, y: -3.9690472e-17, z: -1.621939e-17}
+      rotation: {x: 0, y: 0, z: 0.01985267, w: 0.99980295}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint6
+      parentName: boy:joint5
+      position: {x: -0.08916419, y: 1.0658141e-16, z: -1.0905293e-17}
+      rotation: {x: 0, y: -0, z: -0.049695607, w: 0.9987644}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint7
+      parentName: boy:joint6
+      position: {x: -0.05483498, y: 7.771561e-17, z: -6.707458e-18}
+      rotation: {x: 0, y: 0, z: 0.65561277, w: 0.75509727}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint8
+      parentName: boy:joint7
+      position: {x: -0.020444803, y: 2.1578626e-16, z: -0.058799215}
+      rotation: {x: 0, y: -0, z: -0.346353, w: 0.9381043}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint9
+      parentName: boy:joint8
+      position: {x: -0.031066498, y: 5.15681e-17, z: -0.022533527}
+      rotation: {x: 0, y: 0, z: 0.90117437, w: -0.43345678}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint10
+      parentName: boy:joint7
+      position: {x: -0.009339366, y: 0.0445002, z: 0.0020605323}
+      rotation: {x: 0, y: -0, z: -0.6430048, w: 0.76586217}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint11
+      parentName: boy:joint10
+      position: {x: -0.048444003, y: 0, z: -5.9319827e-18}
+      rotation: {x: 0, y: 0, z: 0.6430048, w: 0.76586217}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint12
+      parentName: boy:joint7
+      position: {x: -0.0053575356, y: 0.046456408, z: -0.0465492}
+      rotation: {x: 0, y: -0, z: -0.6283681, w: 0.7779162}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint13
+      parentName: boy:joint12
+      position: {x: -0.03846625, y: -0.0003294853, z: -0.008693096}
+      rotation: {x: 0, y: 0, z: 0.6283681, w: 0.7779162}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint14
+      parentName: boy:joint7
+      position: {x: -0.0068744826, y: 0.04615248, z: 0.024151772}
+      rotation: {x: 0, y: -0, z: -0.620102, w: 0.7845212}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint15
+      parentName: boy:joint14
+      position: {x: -0.038262907, y: -0.00038098675, z: 0.004168345}
+      rotation: {x: 0, y: 0, z: 0.620102, w: 0.7845212}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint16
+      parentName: boy:joint7
+      position: {x: 0.008823559, y: 0.049251385, z: -0.021956572}
+      rotation: {x: 0, y: -0, z: -0.59064066, w: 0.8069347}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint17
+      parentName: boy:joint16
+      position: {x: -0.051080175, y: 1.1035891e-17, z: -0.0046090144}
+      rotation: {x: 0, y: 0, z: 0.59064066, w: 0.8069347}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint18
+      parentName: boy:joint1
+      position: {x: 0.0010854194, y: 0.14549765, z: 0.03987969}
+      rotation: {x: -0.6793822, y: 0.7337846, z: 0.0000000054671214, w: -0.000000005061792}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint19
+      parentName: boy:joint18
+      position: {x: -0.12184872, y: -4.9960035e-17, z: -1.4878e-17}
+      rotation: {x: 0, y: 0, z: 0.028557649, w: 0.9995922}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint20
+      parentName: boy:joint19
+      position: {x: -0.10557758, y: -1.5511011e-17, z: -8.981877e-11}
+      rotation: {x: 0, y: -0, z: -0.11292808, w: 0.99360317}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint21
+      parentName: boy:joint20
+      position: {x: -0.049910203, y: 3.8929907e-18, z: 1.2524952e-10}
+      rotation: {x: 0, y: 0, z: 0.7078448, w: 0.7063681}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint22
+      parentName: boy:joint21
+      position: {x: -0.024118647, y: -1.457527e-10, z: 0.058799215}
+      rotation: {x: 0, y: -0, z: -0.35490403, w: 0.9349027}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint23
+      parentName: boy:joint22
+      position: {x: -0.03187709, y: -2.6150204e-10, z: 0.022533527}
+      rotation: {x: -0.39668012, y: 0.9179569, z: 5.258038e-10, w: -2.2721752e-10}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint24
+      parentName: boy:joint21
+      position: {x: -0.010443066, y: 0.042348117, z: -4.8472358e-11}
+      rotation: {x: 0, y: -0, z: -0.64572567, w: 0.7635695}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint25
+      parentName: boy:joint24
+      position: {x: -0.04648136, y: 0.004449424, z: -0.0027470705}
+      rotation: {x: 0, y: 0, z: 0.64572567, w: 0.7635695}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint26
+      parentName: boy:joint21
+      position: {x: -0.0040782355, y: 0.044314306, z: 0.022032257}
+      rotation: {x: 0, y: -0, z: -0.63078094, w: 0.775961}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint27
+      parentName: boy:joint26
+      position: {x: -0.048884228, y: 0.004668462, z: 0.00406881}
+      rotation: {x: 0, y: 0, z: 0.63078094, w: 0.775961}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint28
+      parentName: boy:joint21
+      position: {x: 0.0023799129, y: 0.04546739, z: -0.022372339}
+      rotation: {x: 0, y: -0, z: -0.60723597, w: 0.7945216}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint29
+      parentName: boy:joint28
+      position: {x: -0.04241242, y: -0.009334988, z: -0.005839087}
+      rotation: {x: 0, y: 0, z: 0.60723597, w: 0.7945216}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint30
+      parentName: boy:joint21
+      position: {x: 0.009711195, y: 0.042601634, z: 0.047396325}
+      rotation: {x: 0, y: -0, z: -0.59054804, w: 0.8070025}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint31
+      parentName: boy:joint30
+      position: {x: -0.04641645, y: -0.0058894954, z: 0.0074831387}
+      rotation: {x: 0, y: 0, z: 0.59054804, w: 0.8070025}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint32
+      parentName: boy:joint1
+      position: {x: 0.26774433, y: -0.005614335, z: -6.875578e-19}
+      rotation: {x: 0, y: 0, z: 0.9998028, w: 0.01985797}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint33
+      parentName: boy:joint32
+      position: {x: -0.08624604, y: 1.5543122e-16, z: -4.1940078e-19}
+      rotation: {x: 0.7460506, y: 0.66588926, z: 4.0773956e-17, w: 4.5682426e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint34
+      parentName: boy:joint33
+      position: {x: -0.0889967, y: 1.7763568e-17, z: -1.0771394e-17}
+      rotation: {x: 0, y: 0, z: 0.6487588, w: 0.7609941}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint35
+      parentName: boy:joint34
+      position: {x: -0.07381945, y: 0.00049249444, z: -9.029122e-18}
+      rotation: {x: 0, y: -0, z: -0.012183956, w: 0.9999258}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint36
+      parentName: boy:joint35
+      position: {x: -0.104091346, y: -0.00092542445, z: -8.384375e-18}
+      rotation: {x: 0.86604863, y: 0.49995986, z: 0.0000000037249912, w: 0.000000006452565}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint37
+      parentName: boy:joint36
+      position: {x: -0.01849958, y: 0.0000000023219804, z: -0.15582548}
+      rotation: {x: 0, y: 0, z: 0.8734784, w: -0.48686287}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint38
+      parentName: boy:joint33
+      position: {x: 0.0936327, y: -0.02709682, z: 8.520303e-18}
+      rotation: {x: 0, y: 0, z: 0.62411827, w: 0.78132993}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint39
+      parentName: boy:joint38
+      position: {x: -0.06273882, y: 0.0015450245, z: -8.175022e-18}
+      rotation: {x: 0, y: 0, z: 0.01791671, w: 0.9998395}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint40
+      parentName: boy:joint39
+      position: {x: -0.11017947, y: -0.0009884472, z: -9.174732e-18}
+      rotation: {x: 0, y: -0, z: -0.4461365, w: 0.89496493}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy:joint41
+      parentName: boy:joint40
+      position: {x: -0.009716456, y: -1.25618775e-17, z: 0.15582548}
+      rotation: {x: 0, y: -0, z: -0.22746769, w: 0.97378564}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

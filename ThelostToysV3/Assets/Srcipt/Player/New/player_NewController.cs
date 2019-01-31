@@ -77,7 +77,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private float jump_duration_timer;
 
         [Header("Status")]
+        public float playerInRange;
+        public float powerPush;
         public Image status_Image;
+        public GameObject power_icon;
+        private float powerUpTimer;
+        public Transform my_friend;
 
         //setting varible and player system
         private void Start()
@@ -96,7 +101,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void Update()
         {
-            if(!m_jump)
+            if (!m_jump)
             {
                 m_jump = Input.GetButtonDown(m_controller.button3_input);
             }
@@ -104,7 +109,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void LateUpdate()
         {
-            if(m_jump && m_ThirPersonController.m_JumpPower != start_jump_foce)
+            if (m_jump && m_ThirPersonController.m_JumpPower != start_jump_foce)
             {
                 m_audio.PlayOneShot(m_sound.jump_boot);
             }
@@ -112,7 +117,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             //player input movement
             float horizontal = Input.GetAxis(m_controller.leftStick_Horizontal);
             float vertical = Input.GetAxis(m_controller.leftStick_Vertical);
-            Debug.Log(Input.GetButton(m_controller.triger_R2_L_button));
             m_crouch = Input.GetButton(m_controller.triger_R2_L_button);
 
             //player calculate movement
@@ -123,24 +127,35 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_ThirPersonController.Move(m_move, m_crouch, m_jump);
             m_jump = false;
 
-            if(jump_duration_timer > 0)
+            if(powerUpTimer > 0)
+            {
+                power_icon.SetActive(true);
+                powerUpTimer -= Time.deltaTime;
+            }
+            else if(powerUpTimer <= 0)
+            {
+                powerPush = 0;
+                power_icon.SetActive(false);
+            }
+
+            if (jump_duration_timer > 0)
             {
                 jump_duration_timer -= Time.deltaTime;
             }
-            else if(jump_duration_timer <= 0)
+            else if (jump_duration_timer <= 0)
             {
                 reset_boot();
             }
 
             //check visible enemy
-            if(m_isGrass && m_crouch)
+            if (m_isGrass && m_crouch)
             {
                 //visible enemy false
                 //hide from enemy
                 //rend .a ลดลง
                 this.gameObject.tag = "Untagged";
             }
-            else if(!m_crouch ||! m_isGrass)
+            else if (!m_crouch || !m_isGrass)
             {
                 //visile enemy true
                 //show to
@@ -149,22 +164,22 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
 
 
-            if(Input.GetButtonDown(m_controller.button1_input))
+            if (Input.GetButtonDown(m_controller.button1_input))
             {
                 //use item
                 use_toy_number(index_slotSelect);
                 m_slotManager.remove_PlayerToy(index_slotSelect);
                 index_slotSelect = 0;
             }
-            else if(Input.GetButton(m_controller.triger_L2_L_button))//shile system
+            else if (Input.GetButton(m_controller.triger_L2_L_button))//shile system
             {
                 active_Shile();
             }
-            else if(Input.GetButtonUp(m_controller.triger_L2_L_button))
+            else if (Input.GetButtonUp(m_controller.triger_L2_L_button))
             {
                 de_shile();
             }
-            else if(Input.GetButtonDown(m_controller.triger_L1_L_button) && (index_slotSelect + 1) < (m_slotManager.m_toys.Count - 1))
+            else if (Input.GetButtonDown(m_controller.triger_L1_L_button) && (index_slotSelect + 1) < (m_slotManager.m_toys.Count - 1))
             {
                 if (m_slotManager.m_slot[index_slotSelect] != null)
                 {
@@ -173,7 +188,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 index_slotSelect++;
                 m_slotManager.m_slot[index_slotSelect].select();
             }
-            else if(Input.GetButtonDown(m_controller.triger_R1_L_button) && (index_slotSelect - 1) > 0)
+            else if (Input.GetButtonDown(m_controller.triger_R1_L_button) && (index_slotSelect - 1) > 0)
             {
                 if (m_slotManager.m_slot[index_slotSelect] != null)
                 {
@@ -195,13 +210,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void use_toy_number(int index)
         {
             //debug error
-            if(m_slotManager.m_toys[index] == null)
+            if (m_slotManager.m_toys[index] == null)
             {
                 return;
             }
 
             //check frist time use toy
-            if(toy_use != "")
+            if (toy_use != "")
             {
                 m_hand.hide_toy(toy_use);
             }
@@ -221,6 +236,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 case Toy.toy_type.m_attack:
                     //m_attack
                     combo_m_attackStart();
+                    powerUpNear_operation();
                     break;
                 case Toy.toy_type.r_attack:
                     combo_r_attackStart();
@@ -248,6 +264,26 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
         }
 
+        #region
+
+        void powerUpNear_operation()
+        {
+            if(Vector3.Distance(my_friend.position, transform.position) <= playerInRange)
+            {
+                //power up
+                my_friend.GetComponent<player_NewController>().PowerUp();
+            }
+        }
+
+        public void PowerUp()
+        {
+            power_icon.SetActive(true);
+            powerPush = 5;
+            powerUpTimer = 7f;
+        }
+
+        #endregion
+
         #region R_attack
 
         //******************************************************
@@ -261,12 +297,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         //push combo number
         void combo_r_attackStart()
         {
-            if(is_can_input_R_Combo)
+            if (is_can_input_R_Combo)
             {
                 index_combo_r_attack++;
             }
 
-            if(index_combo_r_attack == 1)
+            if (index_combo_r_attack == 1)
             {
                 m_animator.SetInteger("R_attack", 1);
             }
@@ -320,7 +356,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 index_combo_attack++;
             }
 
-            if(index_combo_attack == 1)
+            if (index_combo_attack == 1)
             {
                 m_animator.SetInteger("M_attack", 1);
             }
@@ -336,34 +372,34 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             is_can_input_combo = false;
 
-            if(m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack1") && index_combo_attack == 1)
+            if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack1") && index_combo_attack == 1)
             {
                 goto_groundState();
             }
-            else if(m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack1") && index_combo_attack >= 2)
+            else if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack1") && index_combo_attack >= 2)
             {
                 m_animator.SetInteger("M_attack", 2);
                 is_can_input_combo = true;
             }
-            else if(m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack2") && index_combo_attack > 2)
+            else if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack2") && index_combo_attack > 2)
             {
                 m_animator.SetInteger("M_attack", 3);
                 is_can_input_combo = true;
             }
-            else if(m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack2") && index_combo_attack == 2)
+            else if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack2") && index_combo_attack == 2)
             {
                 goto_groundState();
             }
-            else if(m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack3") && index_combo_attack > 3)
+            else if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack3") && index_combo_attack > 3)
             {
                 m_animator.SetInteger("M_attack", 4);
                 is_can_input_combo = true;
             }
-            else if(m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack3") && index_combo_attack == 3)
+            else if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack3") && index_combo_attack == 3)
             {
                 goto_groundState();
             }
-            else if(m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack4"))
+            else if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("M_attack4"))
             {
                 goto_groundState();
             }
@@ -388,7 +424,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void start_m_attack()
         {
             melee_col.enabled = true;
-            melee_col.GetComponent<axe_col>().dmg = m_slotManager.m_toys[index_toy_using].damge;
+            melee_col.GetComponent<axe_col>().dmg = m_slotManager.m_toys[index_toy_using].damge + powerPush;
         }
 
         //end colvisible
@@ -406,7 +442,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             GameObject faker = Instantiate(m_slotManager.m_toys[index_toy_using].fake_target_pototype, bullet_spawn_point.position, bullet_spawn_point.rotation);
 
-            if(m_slotManager.m_toys[index_toy_using].is_canMove)
+            if (m_slotManager.m_toys[index_toy_using].is_canMove)
             {
                 //shoot faker and set cooldown
                 faker.GetComponent<Rigidbody>().velocity = faker.transform.forward * 10f;
@@ -451,12 +487,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_hand.hide_toy("axe");
         }
 
-        public void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, axe_range);
-        }
-
         #endregion
 
         #region Rolling in the deppppppppp
@@ -490,7 +520,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.tag == "grass")
+            if (other.gameObject.tag == "grass")
             {
                 //player is in grass
                 m_isGrass = true;
@@ -499,7 +529,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void OnTriggerExit(Collider other)
         {
-            if(other.gameObject.tag == "grass")
+            if (other.gameObject.tag == "grass")
             {
                 //player exit grass
                 m_isGrass = false;
@@ -532,12 +562,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             status_Image.sprite = sp;
             status_Image.gameObject.SetActive(true);
         }
-        
+
         void hide_status()
         {
             status_Image.gameObject.SetActive(false);
         }
 
         #endregion
+
+        void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, playerInRange);
+        }
     }
 }

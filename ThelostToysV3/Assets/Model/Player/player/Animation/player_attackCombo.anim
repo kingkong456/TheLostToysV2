@@ -96627,6 +96627,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
+  - time: 0
+    functionName: frezzeMove
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.7
     functionName: start_m_attack
     data: 
@@ -96671,6 +96678,13 @@ AnimationClip:
     messageOptions: 0
   - time: 2.3333333
     functionName: combo_checker
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.3333333
+    functionName: unfrezzeMove
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

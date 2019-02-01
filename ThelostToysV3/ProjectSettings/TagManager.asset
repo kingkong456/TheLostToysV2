@@ -10,6 +10,7 @@ TagManager:
   - grass
   - Faker
   - dropingToy
+  - ChangeCamera
   layers:
   - Default
   - TransparentFX

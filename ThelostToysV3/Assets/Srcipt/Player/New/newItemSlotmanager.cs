@@ -49,14 +49,17 @@ public class newItemSlotmanager : MonoBehaviour {
         m_toys.RemoveAt(index_i);
         m_slot.RemoveAt(index_i);
 
-        for (int i = index_i; i < max_slot; i++)
+        for (int i = 0; i < max_slot; i++)
         {
-            if(m_slot[i] != null)
+            if(m_slot[i - 1] == null)
             {
-               m_slot[i].move_left(slot_moveDegree - 0.75f);
+                if(i != 0)
+                {
+                    m_slot[i].move_left(slot_moveDegree - 0.75f);
+                }
             }
         }
-
+        
         current_item--;
     }
 }

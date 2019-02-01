@@ -628,6 +628,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 //player is in grass
                 m_isGrass = true;
             }
+            if(other.gameObject.tag == "ChangeCamera")
+            {
+                m_camera.GetComponent<Animator>().SetTrigger("Next");
+            }
         }
 
         private void OnTriggerExit(Collider other)

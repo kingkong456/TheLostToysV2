@@ -40,16 +40,20 @@ public class newItemSlotmanager : MonoBehaviour {
         }
     }
 
-    public void remove_PlayerToy(int index)
+    public void remove_PlayerToy(int index_i)
     {
-        m_toys.RemoveAt(index);
-        m_slot.RemoveAt(index);
+        if(m_toys[index_i] == null || m_slot[index_i] == null)
+        {
+            Debug.Log("Bu");
+        }
+        m_toys.RemoveAt(index_i);
+        m_slot.RemoveAt(index_i);
 
-        for (int i = index; i < max_slot; i++)
+        for (int i = index_i; i < max_slot; i++)
         {
             if(m_slot[i] != null)
             {
-                m_slot[i].move_left(slot_moveDegree - 0.75f);
+               m_slot[i].move_left(slot_moveDegree - 0.75f);
             }
         }
 

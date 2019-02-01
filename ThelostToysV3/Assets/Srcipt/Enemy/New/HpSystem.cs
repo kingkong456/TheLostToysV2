@@ -67,14 +67,17 @@ public class HpSystem : MonoBehaviour {
     {
         this.GetComponent<Animator>().SetTrigger("die");
         int drop_number = Random.Range(0, toy_droppingData.Length - 1);
-        //drop_item(drop_number);
+        if((Random.Range(0,3)) != 1)
+        {
+            drop_item(drop_number);
+        }
         Destroy(myHeader, 2f);
         this.GetComponent<AudioSource>().PlayOneShot(myHeader.GetComponent<sound_data>().enemy_die);
     }
 
     void drop_item(int index)
     {
-        Instantiate(toy_droppingData[index], transform.position, transform.rotation);
+        Instantiate(toy_droppingData[index], new Vector3(transform.position.x, toy_droppingData[index].transform.position.y, transform.position.z), transform.rotation);
     }
 
 }

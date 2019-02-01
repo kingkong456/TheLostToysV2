@@ -53,11 +53,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0E01\u0E30\u0E25\u0E32"
   type: 5
-  icon: {fileID: 21300024, guid: de413f10c2387a044913545411435605, type: 3}
+  icon: {fileID: 21300000, guid: 16445c05d17097e469cacd49d237edf8, type: 3}
   damge: 0
   skill_damge: 0
   mana_skill_use: 0
   status_icon: {fileID: 21300000, guid: fe52657b308ba154ba617eefcc682a7e, type: 3}
+  Skill_icon: {fileID: 0}
   skill_fx_pototype: {fileID: 0}
   bullet_pototype: {fileID: 0}
   bullet_skill_pototype: {fileID: 0}

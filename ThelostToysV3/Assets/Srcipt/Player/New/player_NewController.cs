@@ -32,6 +32,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool m_isGrass;
         private Vector3 m_move;
         public bool m_isCraftingState = false;
+        private bool isCanmove = true;
 
         //toy use
         private string toy_use = "";
@@ -111,6 +112,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void LateUpdate()
         {
+            if(!isCanmove)
+            {
+                return;
+            }
+
             if (m_jump && m_ThirPersonController.m_JumpPower != start_jump_foce)
             {
                 m_audio.PlayOneShot(m_sound.jump_boot);
@@ -119,7 +125,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             //player input movement
             float horizontal = Input.GetAxis(m_controller.leftStick_Horizontal);
             float vertical = Input.GetAxis(m_controller.leftStick_Vertical);
-            m_crouch = Input.GetButton(m_controller.triger_R2_L_button);
+            //m_crouch = Input.GetButton(m_controller.triger_R2_L_button);
 
             //player calculate movement
             m_cameraForward = Vector3.Scale(m_camera.forward, new Vector3(1, 0, 1)).normalized;
@@ -167,33 +173,53 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
 
 
-            if (Input.GetButtonUp(m_controller.button1_input))
+            /*if (Input.GetButtonUp(m_controller.button1_input))
             {
                 //use item
                 if(m_slotManager.m_toys[index_slotSelect] != null)
                 {
+                    m_rangeView.SetActive(false);
                     use_toy_number(index_slotSelect);
                     m_slotManager.remove_PlayerToy(index_slotSelect);
                     m_rangeView.SetActive(false);
                     index_slotSelect = 0;
                 }
-            }
-            else if(Input.GetButton(m_controller.button1_input))
+            }*/
+            if(Input.GetButton(m_controller.button1_input))
             {
                 if(m_slotManager.m_toys[index_slotSelect] != null)
                 {
                     m_rangeView.SetActive(true);
                 }
             }
-            else if (Input.GetButton(m_controller.triger_L2_L_button))//shile system
+            else if(Input.GetButtonDown(m_controller.triger_L2_L_button))
+            {
+                if(m_slotManager.m_toys[index_slotSelect] != null)
+                {
+                    use_toy_number(index_slotSelect);
+                    m_slotManager.remove_PlayerToy(index_slotSelect);
+                    index_slotSelect = 0;
+                }
+            }
+            else if(Input.GetButtonDown(m_controller.triger_R2_L_button))
+            {
+                if(m_slotManager.m_toys[index_slotSelect] != null)
+                {
+                    //use toy for friend
+                    useToyForFriend(index_slotSelect);
+                    m_slotManager.remove_PlayerToy(index_slotSelect);
+                    index_slotSelect = 0;
+                }  
+            }
+            /*else if (Input.GetButton(m_controller.triger_L2_L_button))//shile system
             {
                 active_Shile();
             }
             else if (Input.GetButtonUp(m_controller.triger_L2_L_button))
             {
                 de_shile();
-            }
-            else if (Input.GetButtonDown(m_controller.triger_L1_L_button) && (index_slotSelect + 1) < (m_slotManager.m_toys.Count - 1))
+            }*/
+            else if (Input.GetButtonDown(m_controller.triger_L1_L_button) && index_slotSelect < (m_slotManager.m_toys.Count - 1))
             {
                 if (m_slotManager.m_slot[index_slotSelect] != null)
                 {
@@ -202,7 +228,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 index_slotSelect++;
                 m_slotManager.m_slot[index_slotSelect].select();
             }
-            else if (Input.GetButtonDown(m_controller.triger_R1_L_button) && (index_slotSelect - 1) > 0)
+            else if (Input.GetButtonDown(m_controller.triger_R1_L_button) && index_slotSelect > 0)
             {
                 if (m_slotManager.m_slot[index_slotSelect] != null)
                 {
@@ -250,7 +276,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 case Toy.toy_type.m_attack:
                     //m_attack
                     combo_m_attackStart();
-                    powerUpNear_operation();
+                    //powerUpNear_operation();
                     break;
                 case Toy.toy_type.r_attack:
                     combo_r_attackStart();
@@ -263,8 +289,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     dropFaker();
                     break;
                 case Toy.toy_type.heal:
-                    //healing
-                    healPowerUp();
+                    //healPowerUp();
                     healing();
                     break;
                 case Toy.toy_type.default_type:
@@ -277,6 +302,53 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 default:
                     break;
             }
+        }
+
+        void useToyForFriend(int index)
+        {
+            //debug error
+            if (m_slotManager.m_toys[index] == null)
+            {
+                return;
+            }
+
+            //check frist time use toy
+            if (toy_use != "")
+            {
+                m_hand.hide_toy(toy_use);
+            }
+
+            //show new weapon
+            if (m_slotManager.m_toys[index].type != Toy.toy_type.fake_target)
+            {
+                toy_use = m_slotManager.m_toys[index].name;
+                m_hand.active_toy(toy_use);
+            }
+
+            //setting toy number toy now
+            index_toy_using = index;
+
+            switch (m_slotManager.m_toys[index].type)
+            {
+                case Toy.toy_type.m_attack:
+                    my_friend.GetComponent<player_NewController>().PowerUp();
+                    break;
+                case Toy.toy_type.r_attack:
+                    break;
+                case Toy.toy_type.speed:
+                    break;
+                case Toy.toy_type.fake_target:
+                    break;
+                case Toy.toy_type.heal:
+                    my_friend.GetComponent<player_NewController>().healing_fromMyfriend();
+                    break;
+                case Toy.toy_type.default_type:
+                    break;
+                case Toy.toy_type.jump_boot:
+                    break;
+                default:
+                    break;
+            } 
         }
 
         #region power up
@@ -567,6 +639,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log("Tes");
+
+            if(collision.gameObject.tag == "dropingToy")
+            {
+                m_slotManager.add_PlayerToy(collision.gameObject.GetComponent<dropItem>().giveToy);
+            }
+        }
+
         #endregion
 
         #region jump boot
@@ -605,6 +687,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, playerInRange);
+        }
+        
+        void frezzeMove()
+        {
+            isCanmove = false;
+        }
+
+        void unfrezzeMove()
+        {
+            isCanmove = true;
         }
     }
 }

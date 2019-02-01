@@ -9,6 +9,7 @@ TagManager:
   - axe
   - grass
   - Faker
+  - dropingToy
   layers:
   - Default
   - TransparentFX

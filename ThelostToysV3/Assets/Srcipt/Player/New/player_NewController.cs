@@ -78,11 +78,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         [Header("Status")]
         public float playerInRange;
+        public GameObject m_rangeView;
         public float powerPush;
         public Image status_Image;
         public GameObject power_icon;
         private float powerUpTimer;
         public Transform my_friend;
+        public GameObject healing_Fx_pototype;
 
         //setting varible and player system
         private void Start()
@@ -134,6 +136,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
             else if(powerUpTimer <= 0)
             {
+                //end
                 powerPush = 0;
                 power_icon.SetActive(false);
             }
@@ -164,12 +167,23 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
 
 
-            if (Input.GetButtonDown(m_controller.button1_input))
+            if (Input.GetButtonUp(m_controller.button1_input))
             {
                 //use item
-                use_toy_number(index_slotSelect);
-                m_slotManager.remove_PlayerToy(index_slotSelect);
-                index_slotSelect = 0;
+                if(m_slotManager.m_toys[index_slotSelect] != null)
+                {
+                    use_toy_number(index_slotSelect);
+                    m_slotManager.remove_PlayerToy(index_slotSelect);
+                    m_rangeView.SetActive(false);
+                    index_slotSelect = 0;
+                }
+            }
+            else if(Input.GetButton(m_controller.button1_input))
+            {
+                if(m_slotManager.m_toys[index_slotSelect] != null)
+                {
+                    m_rangeView.SetActive(true);
+                }
             }
             else if (Input.GetButton(m_controller.triger_L2_L_button))//shile system
             {
@@ -250,6 +264,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     break;
                 case Toy.toy_type.heal:
                     //healing
+                    healPowerUp();
                     healing();
                     break;
                 case Toy.toy_type.default_type:
@@ -264,7 +279,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
         }
 
-        #region
+        #region power up
 
         void powerUpNear_operation()
         {
@@ -280,6 +295,21 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             power_icon.SetActive(true);
             powerPush = 5;
             powerUpTimer = 7f;
+        }
+
+        void healPowerUp()
+        {
+            if(Vector3.Distance(transform.position,my_friend.position) <= playerInRange)
+            {
+                my_friend.GetComponent<player_NewController>().healing_fromMyfriend();
+            }
+        }
+
+        void healing_fromMyfriend()
+        {
+            GameObject heal_Fx = Instantiate(healing_Fx_pototype, transform.position, transform.rotation);
+            m_data.heal_hp(5);
+            Destroy(heal_Fx, 1f);
         }
 
         #endregion
@@ -414,6 +444,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_animator.SetInteger("M_attack", -1);
             is_can_input_combo = true;
             index_combo_attack = 0;
+            m_hand.hide_toy(toy_use);
         }
 
         //***********************************

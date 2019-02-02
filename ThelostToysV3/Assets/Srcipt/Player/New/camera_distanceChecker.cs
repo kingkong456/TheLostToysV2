@@ -16,7 +16,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         // Update is called once per frame
         void Update()
         {
-            if (Vector3.Distance(player1.position, player2.position) >= max_distance || (player1.GetComponent<player_NewController>().m_isCraftingState || player1.GetComponent<player_NewController>().m_isCraftingState))
+            if (Vector3.Distance(player1.position, player2.position) >= max_distance)
             {
                 main_cam.GetComponent<Camera>().enabled = false;
                 main_cam.GetComponent<cameraMultiTraget>().islock = true;

@@ -7,6 +7,7 @@ public class newSlotNode : MonoBehaviour {
     public Image m_img_icon;
     public int leftRight;
     public GameObject select_current;
+    public Transform spawnRemovePoint;
 
     void Start()
     {
@@ -15,7 +16,7 @@ public class newSlotNode : MonoBehaviour {
 
     public void move_left(float degree)
     {
-        transform.Rotate(0, 0,  leftRight * degree);
+        transform.Rotate(new Vector3(0, 0,  leftRight * degree));
     }
 
     public void set_NewICon(Sprite icon)

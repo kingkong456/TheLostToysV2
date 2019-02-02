@@ -19,6 +19,7 @@ public class newItemSlotmanager : MonoBehaviour {
     public GameObject slot_pototype;
     public RectTransform spawn_slot_point;
     public float slot_moveDegree = 17.5f;
+    public GameObject removeSlot_particle;
 
     //add new toy
     public void add_PlayerToy(Toy toy_i)
@@ -34,7 +35,7 @@ public class newItemSlotmanager : MonoBehaviour {
 
             for (int i = 0; i < (max_slot - current_item); i++)
             {
-                new_slot.GetComponent<newSlotNode>().move_left(slot_moveDegree - 0.75f);
+                new_slot.GetComponent<newSlotNode>().move_left(slot_moveDegree);
             }
             current_item++;
         }
@@ -42,24 +43,20 @@ public class newItemSlotmanager : MonoBehaviour {
 
     public void remove_PlayerToy(int index_i)
     {
-        if(m_toys[index_i] == null || m_slot[index_i] == null)
-        {
-            Debug.Log("Bu");
-        }
+        GameObject fx = Instantiate(removeSlot_particle, m_slot[index_i].spawnRemovePoint.position, removeSlot_particle.transform.rotation, transform);
+        Destroy(fx, 3);
+
+        Debug.Log(index_i);
+        Destroy(m_slot[index_i].gameObject);
         m_toys.RemoveAt(index_i);
         m_slot.RemoveAt(index_i);
 
-        for (int i = 0; i < max_slot; i++)
+        for (int i = index_i; i < max_slot + 1; i++)
         {
-            if(m_slot[i - 1] == null)
-            {
-                if(i != 0)
-                {
-                    m_slot[i].move_left(slot_moveDegree - 0.75f);
-                }
-            }
+            Debug.Log(i);
+            m_slot[i].move_left(slot_moveDegree);
         }
-        
+
         current_item--;
     }
 }

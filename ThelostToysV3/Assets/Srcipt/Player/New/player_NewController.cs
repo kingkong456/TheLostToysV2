@@ -31,7 +31,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool m_crouch;
         private bool m_isGrass;
         private Vector3 m_move;
-        public bool m_isCraftingState = false;
         private bool isCanmove = true;
 
         //toy use
@@ -48,8 +47,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public Collider melee_col;
         public Collider M_skill_col;
         public Transform m_skill_spawn_point;
-        public float axe_range;
-        public GameObject cutTree_Button;
         private int index_toy_using;
         //combo system
         private bool is_can_input_combo = true;
@@ -61,17 +58,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool is_can_input_R_Combo = true;
         private int index_combo_r_attack;
 
-        //use for shile system eiei
-        [Header("Shile System")]
-        public GameObject shile;
-        private bool isUseShile = false;
-
-        //Rolling
-        [Header("Rolling")]
-        public float cooldown_time_roll = 0.5f;
-        private float last_time_roll = 0;
-        public float roll_foce;
-
         [Header("jump")]
         public float start_jump_foce;
         private float jumpfoce;
@@ -79,7 +65,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         [Header("Status")]
         public float playerInRange;
-        public GameObject m_rangeView;
         public float powerPush;
         public Image status_Image;
         public GameObject power_icon;
@@ -172,38 +157,27 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 this.gameObject.tag = "Player";
             }
 
-
-            /*if (Input.GetButtonUp(m_controller.button1_input))
+            if(Input.GetButtonDown(m_controller.triger_L2_L_button))
             {
-                //use item
-                if(m_slotManager.m_toys[index_slotSelect] != null)
+                if(m_slotManager.m_toys.Count < 1)
                 {
-                    m_rangeView.SetActive(false);
-                    use_toy_number(index_slotSelect);
-                    m_slotManager.remove_PlayerToy(index_slotSelect);
-                    m_rangeView.SetActive(false);
-                    index_slotSelect = 0;
+                    return;
                 }
-            }*/
-            if(Input.GetButton(m_controller.button1_input))
-            {
-                if(m_slotManager.m_toys[index_slotSelect] != null)
-                {
-                    m_rangeView.SetActive(true);
-                }
-            }
-            else if(Input.GetButtonDown(m_controller.triger_L2_L_button))
-            {
                 if(m_slotManager.m_toys[index_slotSelect] != null)
                 {
                     use_toy_number(index_slotSelect);
                     m_slotManager.remove_PlayerToy(index_slotSelect);
+                    Debug.Log("Yes");
                     index_slotSelect = 0;
                 }
             }
             else if(Input.GetButtonDown(m_controller.triger_R2_L_button))
             {
-                if(m_slotManager.m_toys[index_slotSelect] != null)
+                if(m_slotManager.m_toys.Count < 1)
+                {
+                    return;
+                }
+                if (m_slotManager.m_toys[index_slotSelect] != null)
                 {
                     //use toy for friend
                     useToyForFriend(index_slotSelect);
@@ -211,14 +185,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     index_slotSelect = 0;
                 }  
             }
-            /*else if (Input.GetButton(m_controller.triger_L2_L_button))//shile system
-            {
-                active_Shile();
-            }
-            else if (Input.GetButtonUp(m_controller.triger_L2_L_button))
-            {
-                de_shile();
-            }*/
             else if (Input.GetButtonDown(m_controller.triger_L1_L_button) && index_slotSelect < (m_slotManager.m_toys.Count - 1))
             {
                 if (m_slotManager.m_slot[index_slotSelect] != null)
@@ -243,7 +209,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 m_slotManager.add_PlayerToy(m_data.m_toys[0]);
             }
 
-            m_animator.SetBool("Shile", isUseShile);
         }
 
         //use toy
@@ -601,24 +566,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         #endregion
 
-        #region shile
-
-        void active_Shile()
-        {
-            shile.SetActive(true);
-            isUseShile = true;
-            this.gameObject.tag = "Untagged";
-        }
-
-        void de_shile()
-        {
-            shile.SetActive(false);
-            isUseShile = false;
-            this.gameObject.tag = "Untagged";
-        }
-
-        #endregion
-
         #region collision function
 
         private void OnTriggerEnter(Collider other)
@@ -628,10 +575,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 //player is in grass
                 m_isGrass = true;
             }
-            if(other.gameObject.tag == "ChangeCamera")
-            {
-                m_camera.GetComponent<Animator>().SetTrigger("Next");
-            }
+            //if(other.gameObject.tag == "ChangeCamera")
+            //{
+            //    m_camera.GetComponent<Animator>().SetTrigger("Next");
+            //}
         }
 
         private void OnTriggerExit(Collider other)
@@ -650,6 +597,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if(collision.gameObject.tag == "dropingToy")
             {
                 m_slotManager.add_PlayerToy(collision.gameObject.GetComponent<dropItem>().giveToy);
+                Destroy(collision.gameObject);
             }
         }
 

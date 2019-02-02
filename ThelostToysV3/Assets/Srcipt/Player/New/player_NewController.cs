@@ -71,6 +71,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private float powerUpTimer;
         public Transform my_friend;
         public GameObject healing_Fx_pototype;
+        public GameObject jump_boot_icon_powerUp;
 
         //setting varible and player system
         private void Start()
@@ -120,8 +121,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_ThirPersonController.Move(m_move, m_crouch, m_jump);
             m_jump = false;
 
+            //************time checker******************
+            //attack power up
             if(powerUpTimer > 0)
             {
+                Debug.Log("qq");
                 power_icon.SetActive(true);
                 powerUpTimer -= Time.deltaTime;
             }
@@ -131,6 +135,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 powerPush = 0;
                 power_icon.SetActive(false);
             }
+
+            //jump boot power up
+            if(jump_duration_timer > 0)
+            {
+                jump_duration_timer -= Time.deltaTime;
+            }else if(jump_duration_timer <= 0)
+            {
+                reset_boot();
+            }
+
+            //*****************************************
 
             if (jump_duration_timer > 0)
             {
@@ -310,6 +325,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 case Toy.toy_type.default_type:
                     break;
                 case Toy.toy_type.jump_boot:
+                    my_friend.GetComponent<player_NewController>().jumpPowerUpFromFriend();
                     break;
                 default:
                     break;
@@ -347,6 +363,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             GameObject heal_Fx = Instantiate(healing_Fx_pototype, transform.position, transform.rotation);
             m_data.heal_hp(5);
             Destroy(heal_Fx, 1f);
+        }
+
+        public void jumpPowerUpFromFriend()
+        {
+            jump_boot_icon_powerUp.SetActive(true);
+            m_ThirPersonController.m_JumpPower += 5;
+            jump_duration_timer = 5f;
         }
 
         #endregion
@@ -607,14 +630,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         void jump_boot()
         {
-            set_show_Status(m_slotManager.m_toys[index_toy_using].status_icon);
+            //set_show_Status(m_slotManager.m_toys[index_toy_using].status_icon);
+            jump_boot_icon_powerUp.SetActive(true);
             m_ThirPersonController.m_JumpPower = m_slotManager.m_toys[index_toy_using].var_boot_much_more;
             jump_duration_timer = m_slotManager.m_toys[index_toy_using].duration_boot;
         }
 
         void reset_boot()
         {
-            hide_status();
+            //hide_status();
+            jump_boot_icon_powerUp.SetActive(false);
             m_ThirPersonController.m_JumpPower = start_jump_foce;
         }
 

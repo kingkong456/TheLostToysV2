@@ -454,7 +454,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         void play_sword_sound()
         {
-            m_audio.PlayOneShot(m_sound.Sword);
+            //m_audio.PlayOneShot(m_sound.Sword);
         }
 
         //ckecker what should player do next animation
@@ -514,6 +514,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         //setting col true
         void start_m_attack()
         {
+            m_audio.PlayOneShot(m_sound.Sword[Random.Range(0, (m_sound.Sword.Length - 1))]);
             melee_col.enabled = true;
             melee_col.GetComponent<axe_col>().dmg = m_slotManager.m_toys[index_toy_using].damge + powerPush;
         }

@@ -423,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: woodSword
   type: 0
-  icon: {fileID: 21300014, guid: de413f10c2387a044913545411435605, type: 3}
+  icon: {fileID: 21300000, guid: 3f71668660ddc56409a27f8d96876121, type: 3}
   damge: 5
   skill_damge: 20
   mana_skill_use: 2

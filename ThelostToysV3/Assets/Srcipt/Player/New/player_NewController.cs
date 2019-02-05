@@ -598,10 +598,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 //player is in grass
                 m_isGrass = true;
             }
-            //if(other.gameObject.tag == "ChangeCamera")
-            //{
-            //    m_camera.GetComponent<Animator>().SetTrigger("Next");
-            //}
+            if(other.gameObject.tag == "ChangeCamera")
+            {
+                m_camera.gameObject.GetComponent<Animator>().SetTrigger("Next");
+            }
         }
 
         private void OnTriggerExit(Collider other)
@@ -615,8 +615,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("Tes");
-
             if(collision.gameObject.tag == "dropingToy")
             {
                 m_slotManager.add_PlayerToy(collision.gameObject.GetComponent<dropItem>().giveToy);

@@ -56,6 +56,7 @@ public class newItemSlotmanager : MonoBehaviour {
         //Debug.Log(m_toys[0]);
         //m_toys.RemoveAt(index);
         //m_slot.RemoveAt(index);
+        Debug.Log(m_toys[index]);
         m_toys.Remove(toy_remove);
         m_slot.Remove(slot_remove);
 

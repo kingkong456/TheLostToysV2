@@ -174,21 +174,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             if(Input.GetButtonDown(m_controller.triger_L2_L_button))
             {
-                if(m_slotManager.m_toys.Count < 1)
+                if(m_slotManager.m_toys.Count == 0)
                 {
                     return;
                 }
                 if(m_slotManager.m_toys[index_slotSelect] != null)
                 {
                     use_toy_number(index_slotSelect);
-                    m_slotManager.remove_PlayerToy(index_slotSelect);
-                    Debug.Log("Yes");
-                    index_slotSelect = 0;
+                    m_slotManager.remove_PlayerToy(m_slotManager.m_toys[index_slotSelect], m_slotManager.m_slot[index_slotSelect], index_slotSelect);
+                    index_slotSelect = index_slotSelect - 1;
                 }
             }
             else if(Input.GetButtonDown(m_controller.triger_R2_L_button))
             {
-                if(m_slotManager.m_toys.Count < 1)
+                if(m_slotManager.m_toys.Count == 0)
                 {
                     return;
                 }
@@ -196,8 +195,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
                     //use toy for friend
                     useToyForFriend(index_slotSelect);
-                    m_slotManager.remove_PlayerToy(index_slotSelect);
-                    index_slotSelect = 0;
+                    m_slotManager.remove_PlayerToy(m_slotManager.m_toys[index_slotSelect], m_slotManager.m_slot[index_slotSelect], index_slotSelect);
+                    index_slotSelect = index_slotSelect - 1;
                 }  
             }
             else if (Input.GetButtonDown(m_controller.triger_L1_L_button) && index_slotSelect < (m_slotManager.m_toys.Count - 1))
@@ -259,7 +258,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     //powerUpNear_operation();
                     break;
                 case Toy.toy_type.r_attack:
-                    combo_r_attackStart();
+                    m_animator.SetTrigger("R_attack");
                     //r_attack
                     break;
                 case Toy.toy_type.speed:
@@ -560,7 +559,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_data.heal_hp(m_slotManager.m_toys[index_toy_using].heal_point);
             m_data.add_mana(m_slotManager.m_toys[index_toy_using].heal_point);
             GameObject heal_Fx = Instantiate(m_slotManager.m_toys[index_toy_using].Heal_Fx_pototype, transform.position, transform.rotation);
-            Destroy(heal_Fx, 1f);
+            Destroy(heal_Fx, 3f);
         }
 
         #endregion

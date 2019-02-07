@@ -35,6 +35,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         //toy use
         private string toy_use = "";
+        private bool isShooingState = false;
 
         [Header("Slot")]
         private int index_slotSelect = 0;
@@ -55,8 +56,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         //use for range attack
         [Header("R Attack")]
         public Transform bullet_spawn_point;
+        public GameObject ChartPototype;
+        public GameObject exposion_pototype;
+        public GameObject bullet_pototype;
+        public GameObject shooting_view;
         private bool is_can_input_R_Combo = true;
         private int index_combo_r_attack;
+
+        [Header("speed")]
+        public float start_speed_Limit;
+        private float speed_duration_timer;
+        public GameObject speetril;
+        private GameObject speedToy;
 
         [Header("jump")]
         public float start_jump_foce;
@@ -85,6 +96,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_audio = GetComponent<AudioSource>();
 
             //set default jump power
+            start_speed_Limit = m_ThirPersonController.m_speedLimit;
             start_jump_foce = m_ThirPersonController.m_JumpPower;
         }
 
@@ -116,6 +128,23 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             //player calculate movement
             m_cameraForward = Vector3.Scale(m_camera.forward, new Vector3(1, 0, 1)).normalized;
             m_move = vertical * m_cameraForward + horizontal * m_camera.right;
+
+            //shooting state
+            if(isShooingState)
+            {
+                m_move = Vector3.zero;
+                float turn = Mathf.Atan2(Input.GetAxis(m_controller.leftStick_Horizontal), Input.GetAxis(m_controller.leftStick_Vertical));
+                transform.Rotate(0, turn  * 50f * Time.deltaTime, 0);
+
+                if(Input.GetButtonDown(m_controller.triger_L2_L_button))
+                {
+                    //shooting 
+                    ChartPototype.SetActive(false);
+                    m_animator.SetTrigger("Shoot");
+                    shooting_view.SetActive(false);
+                    return;
+                }
+            }
 
             //display player movement
             m_ThirPersonController.Move(m_move, m_crouch, m_jump);
@@ -156,6 +185,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 reset_boot();
             }
 
+            if(speed_duration_timer > 0)
+            {
+                speed_duration_timer -= Time.deltaTime;
+            }
+            else if(speed_duration_timer <= 0)
+            {
+                //reset 
+                if(speedToy != null)
+                {
+                    speedToy.SetActive(false);
+                }
+                resetSpeed();
+            }
+
             //check visible enemy
             if (m_isGrass && m_crouch)
             {
@@ -181,8 +224,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 if(m_slotManager.m_toys[index_slotSelect] != null)
                 {
                     use_toy_number(index_slotSelect);
-                    m_slotManager.remove_PlayerToy(m_slotManager.m_toys[index_slotSelect], m_slotManager.m_slot[index_slotSelect], index_slotSelect);
-                    index_slotSelect = index_slotSelect - 1;
+                    m_slotManager.remove_PlayerToy(index_slotSelect);
+                    if(index_slotSelect != 0)
+                    {
+                        index_slotSelect -= 1;
+                    }
+                    else
+                    {
+                        index_slotSelect = 0;
+                    }
                 }
             }
             else if(Input.GetButtonDown(m_controller.triger_R2_L_button))
@@ -195,8 +245,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
                     //use toy for friend
                     useToyForFriend(index_slotSelect);
-                    m_slotManager.remove_PlayerToy(m_slotManager.m_toys[index_slotSelect], m_slotManager.m_slot[index_slotSelect], index_slotSelect);
-                    index_slotSelect = index_slotSelect - 1;
+                    m_slotManager.remove_PlayerToy(index_slotSelect);
+                    if (index_slotSelect != 0)
+                    {
+                        index_slotSelect -= 1;
+                    }
+                    else
+                    {
+                        index_slotSelect = 0;
+                    }
                 }  
             }
             else if (Input.GetButtonDown(m_controller.triger_L1_L_button) && index_slotSelect < (m_slotManager.m_toys.Count - 1))
@@ -222,7 +279,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 m_slotManager.add_PlayerToy(m_data.m_toys[0]);
             }
-
         }
 
         //use toy
@@ -259,9 +315,21 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     break;
                 case Toy.toy_type.r_attack:
                     m_animator.SetTrigger("R_attack");
+                    ChartPototype.SetActive(true);
+                    isShooingState = true;
+                    shooting_view.SetActive(true);
                     //r_attack
                     break;
                 case Toy.toy_type.speed:
+                    speed_duration_timer = 5f;
+                    for (int i = 0; i < m_hand.toys_po.Length; i++)
+                    {
+                        if(m_hand.toys_po[i].name == toy_use)
+                        {
+                            speedToy = m_hand.toys_po[i];
+                        }
+                    }
+                    speedUp();
                     break;
                 case Toy.toy_type.fake_target:
                     //faker item 
@@ -373,6 +441,22 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         #endregion
 
+        #region speed
+
+        void speedUp()
+        {
+            m_ThirPersonController.m_speedLimit -= 2f;
+            speetril.SetActive(true);
+        }
+
+        void resetSpeed()
+        {
+            m_ThirPersonController.m_speedLimit = start_speed_Limit;
+            speetril.SetActive(false);
+        }
+
+        #endregion
+
         #region R_attack
 
         //******************************************************
@@ -418,14 +502,19 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         void shoot()
         {
-            GameObject exposion = Instantiate(m_slotManager.m_toys[index_toy_using].exposion_fire_point, bullet_spawn_point.position, bullet_spawn_point.rotation);
-            GameObject bullet = Instantiate(m_slotManager.m_toys[index_toy_using].bullet_pototype, bullet_spawn_point.position, bullet_spawn_point.rotation);
-            bullet.GetComponent<bullet_Col>().dmg = m_slotManager.m_toys[index_toy_using].damge;
+            GameObject exposion = Instantiate(exposion_pototype, bullet_spawn_point.position, bullet_spawn_point.rotation);
+            GameObject bullet = Instantiate(bullet_pototype, bullet_spawn_point.position, bullet_spawn_point.rotation);
+            bullet.GetComponent<bullet_Col>().dmg = 4;
             bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6f;
             Destroy(exposion, 2);
 
             //play sound
-            m_audio.PlayOneShot(m_sound.shoot);
+            //m_audio.PlayOneShot(m_sound.shoot);
+        }
+
+        void endShoot()
+        {
+            isShooingState = false;
         }
 
         #endregion
@@ -556,10 +645,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void spawn_healing_particle()
         {
             m_audio.PlayOneShot(m_sound.Heal);
-            m_data.heal_hp(m_slotManager.m_toys[index_toy_using].heal_point);
-            m_data.add_mana(m_slotManager.m_toys[index_toy_using].heal_point);
-            GameObject heal_Fx = Instantiate(m_slotManager.m_toys[index_toy_using].Heal_Fx_pototype, transform.position, transform.rotation);
-            Destroy(heal_Fx, 3f);
+            m_data.heal_hp(5);
+            m_data.add_mana(5);
+            GameObject heal_Fx = Instantiate(healing_Fx_pototype, transform.position, transform.rotation);
+            Destroy(heal_Fx, 1f);
         }
 
         #endregion

@@ -47,7 +47,6 @@ public class HpSystem : MonoBehaviour {
         spawntext_hp();
 
         hp_bar.fillAmount = hp / start_hp;
-
         if(hp <= 0)
         {
             die();
@@ -72,7 +71,7 @@ public class HpSystem : MonoBehaviour {
             drop_item(drop_number);
         }
         Destroy(myHeader, 2f);
-        this.GetComponent<AudioSource>().PlayOneShot(myHeader.GetComponent<sound_data>().enemy_die);
+        //this.GetComponent<AudioSource>().PlayOneShot(myHeader.GetComponent<sound_data>().enemy_die);
     }
 
     void drop_item(int index)

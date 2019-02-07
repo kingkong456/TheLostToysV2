@@ -447,7 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: CossBow
   type: 1
-  icon: {fileID: 21300028, guid: de413f10c2387a044913545411435605, type: 3}
+  icon: {fileID: 21300000, guid: 35c38afc11f15e148a896c6b524a1504, type: 3}
   damge: 2
   skill_damge: 20
   mana_skill_use: 2

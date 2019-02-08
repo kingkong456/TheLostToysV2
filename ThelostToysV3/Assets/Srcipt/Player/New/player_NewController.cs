@@ -74,7 +74,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private float jumpfoce;
         private float jump_duration_timer;
 
+        [Header("Shilde")]
+        public GameObject shileFx;
+        private float shile_duration_timer;
+
         [Header("Status")]
+        public GameObject attack_powerUppartic;
         public float playerInRange;
         public float powerPush;
         public Image status_Image;
@@ -83,6 +88,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public Transform my_friend;
         public GameObject healing_Fx_pototype;
         public GameObject jump_boot_icon_powerUp;
+
+        [Header("toy by time")]
+        public Toy[] toyRandom_byTime;
+        private float random_Toy_timer;
 
         //setting varible and player system
         private void Start()
@@ -150,18 +159,38 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_ThirPersonController.Move(m_move, m_crouch, m_jump);
             m_jump = false;
 
+            //**************random toy by timer************ */
+
+            if(random_Toy_timer > 0)
+            {
+                random_Toy_timer -= Time.deltaTime;
+            }
+            else if(random_Toy_timer <= 0)
+            {
+                if(m_slotManager.m_toys.Count < 5)
+                {
+                        m_audio.PlayOneShot(m_sound.getToy);
+                }
+                m_slotManager.add_PlayerToy(toyRandom_byTime[Random.Range(0,  toyRandom_byTime.Length - 1)]);
+                random_Toy_timer = 10f;
+            }
+
+            //*/************************ */
+
             //************time checker******************
             //attack power up
             if(powerUpTimer > 0)
             {
                 Debug.Log("qq");
                 power_icon.SetActive(true);
+                attack_powerUppartic.SetActive(true);
                 powerUpTimer -= Time.deltaTime;
             }
             else if(powerUpTimer <= 0)
             {
                 //end
                 powerPush = 0;
+                attack_powerUppartic.SetActive(false);
                 power_icon.SetActive(false);
             }
 
@@ -173,8 +202,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 reset_boot();
             }
-
-            //*****************************************
 
             if (jump_duration_timer > 0)
             {
@@ -198,6 +225,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 }
                 resetSpeed();
             }
+
+            if(shile_duration_timer > 0)
+            {
+                shileFx.SetActive(true);
+                shile_duration_timer -= Time.deltaTime;
+            }
+            else if(shile_duration_timer <= 0)
+            {
+                shileFx.SetActive(false);
+            }
+
+            //************************************************
 
             //check visible enemy
             if (m_isGrass && m_crouch)
@@ -314,6 +353,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     //powerUpNear_operation();
                     break;
                 case Toy.toy_type.r_attack:
+                    m_audio.PlayOneShot(m_sound.chartShoot);
                     m_animator.SetTrigger("R_attack");
                     ChartPototype.SetActive(true);
                     isShooingState = true;
@@ -345,6 +385,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     //incraea jump fore
                     //in duration
                     jump_boot();
+                    break;
+                case Toy.toy_type.shile:
+                    active_shile();
                     break;
                 default:
                     break;
@@ -393,6 +436,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     break;
                 case Toy.toy_type.jump_boot:
                     my_friend.GetComponent<player_NewController>().jumpPowerUpFromFriend();
+                    break;
+                case Toy.toy_type.shile:
+                    my_friend.GetComponent<player_NewController>().active_shile();
                     break;
                 default:
                     break;
@@ -509,7 +555,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             Destroy(exposion, 2);
 
             //play sound
-            //m_audio.PlayOneShot(m_sound.shoot);
+            m_audio.PlayOneShot(m_sound.shoot);
         }
 
         void endShoot()
@@ -604,7 +650,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             m_audio.PlayOneShot(m_sound.Sword[Random.Range(0, (m_sound.Sword.Length - 1))]);
             melee_col.enabled = true;
-            melee_col.GetComponent<axe_col>().dmg = m_slotManager.m_toys[index_toy_using].damge + powerPush;
+            melee_col.GetComponent<axe_col>().dmg = 5 + powerPush;
         }
 
         //end colvisible
@@ -707,6 +753,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if(collision.gameObject.tag == "dropingToy")
             {
                 m_slotManager.add_PlayerToy(collision.gameObject.GetComponent<dropItem>().giveToy);
+                m_audio.PlayOneShot(m_sound.getToy);
                 Destroy(collision.gameObject);
             }
         }
@@ -743,6 +790,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void hide_status()
         {
             status_Image.gameObject.SetActive(false);
+        }
+
+        #endregion
+
+        #region
+
+        public void active_shile()
+        {
+            shile_duration_timer = 7f;
         }
 
         #endregion

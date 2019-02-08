@@ -12,7 +12,8 @@ public class Toy : MonoBehaviour {
         speed,
         fake_target,
         heal,
-        jump_boot
+        jump_boot,
+        shile
         ,default_type
     };
 

@@ -43,6 +43,8 @@ public class newItemSlotmanager : MonoBehaviour {
           {
               new_slot.GetComponent<newSlotNode>().move_left(slot_moveDegree);
           }
+
+//          checkToy_Stack();
           current_item++;
       }
     }
@@ -61,6 +63,20 @@ public class newItemSlotmanager : MonoBehaviour {
         for (int i = index; i < max_slot + 1; i++)
         {
             m_slot[i].move_left(slot_moveDegree);
+        }
+    }
+
+    public void checkToy_Stack()
+    {
+        for(int i = 0;i < current_item ;i++)
+        {
+            if(i != 0 && i != (max_slot - 1))
+            {
+                if(m_toys[i] == m_toys[i - 1] && m_toys[i] == m_toys[i + 1])
+                {
+                    
+                }
+            }
         }
     }
 }

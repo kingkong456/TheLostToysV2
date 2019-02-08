@@ -1271,7 +1271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: fogy
-  type: 3
+  type: 6
   icon: {fileID: 21300000, guid: 84693493a5de66640a380e7d918b077d, type: 3}
   damge: 0
   skill_damge: 0

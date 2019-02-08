@@ -55,7 +55,7 @@ public class HpSystem : MonoBehaviour {
 
     void spawntext_hp()
     {
-        var go = Instantiate(text_hp, transform.position + textOffset, Quaternion.identity, transform);
+        var go = Instantiate(text_hp, transform.position + textOffset, Quaternion.identity);
         go.GetComponent<TextMesh>().text = hp.ToString();
     }
 

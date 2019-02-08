@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: 0ebc439f7eebfd94bbfffa841c8e4e38
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: back
+    100002: curve3closedCurve2
+    100004: eduo:pCube12
+    100006: //RootNode
+    100008: ikHandle3
+    100010: ikHandle4
+    100012: kongzhiqi:curve2closedCurve1
+    100014: kongzhiqi:curve3closedCurve2
+    100016: kongzhiqi:nurbsCircle1
+    100018: kongzhiqi:nurbsCircle2
+    100020: kongzhiqi:nurbsCircle5
+    100022: lian:pCube6
+    100024: lian:pPlane5
+    100026: pCube12
+    100028: pCube13
+    100030: pCube14
+    100032: pCube15
+    100034: pCube16
+    100036: pCube17
+    100038: pCube18
+    100040: pCube6
+    100042: pCube7
+    100044: pCube8
+    100046: pCube9
+    100048: pSphere1
+    100050: pSphere2
+    100052: shou:shou:shou:shou:pCube11
+    100054: yachi:pPlane5
+    400000: back
+    400002: curve3closedCurve2
+    400004: eduo:pCube12
+    400006: //RootNode
+    400008: ikHandle3
+    400010: ikHandle4
+    400012: kongzhiqi:curve2closedCurve1
+    400014: kongzhiqi:curve3closedCurve2
+    400016: kongzhiqi:nurbsCircle1
+    400018: kongzhiqi:nurbsCircle2
+    400020: kongzhiqi:nurbsCircle5
+    400022: lian:pCube6
+    400024: lian:pPlane5
+    400026: pCube12
+    400028: pCube13
+    400030: pCube14
+    400032: pCube15
+    400034: pCube16
+    400036: pCube17
+    400038: pCube18
+    400040: pCube6
+    400042: pCube7
+    400044: pCube8
+    400046: pCube9
+    400048: pSphere1
+    400050: pSphere2
+    400052: shou:shou:shou:shou:pCube11
+    400054: yachi:pPlane5
+    2000000: back
+    2100000: skin
+    2100002: hair
+    2100004: lambert4
+    2100006: shoe
+    2100008: head
+    2100010: blinn1
+    2100012: blinn2
+    2100014: phong1
+    2100016: yachi_lambert2
+    2100018: yachi_lambert3
+    2100020: lambert1
+    2300000: eduo:pCube12
+    2300002: lian:pCube6
+    2300004: lian:pPlane5
+    2300006: pCube12
+    2300008: pCube13
+    2300010: pCube14
+    2300012: pCube15
+    2300014: pCube16
+    2300016: pCube17
+    2300018: pCube18
+    2300020: pCube6
+    2300022: pCube7
+    2300024: pCube8
+    2300026: pCube9
+    2300028: pSphere1
+    2300030: pSphere2
+    2300032: shou:shou:shou:shou:pCube11
+    2300034: yachi:pPlane5
+    3300000: eduo:pCube12
+    3300002: lian:pCube6
+    3300004: lian:pPlane5
+    3300006: pCube12
+    3300008: pCube13
+    3300010: pCube14
+    3300012: pCube15
+    3300014: pCube16
+    3300016: pCube17
+    3300018: pCube18
+    3300020: pCube6
+    3300022: pCube7
+    3300024: pCube8
+    3300026: pCube9
+    3300028: pSphere1
+    3300030: pSphere2
+    3300032: shou:shou:shou:shou:pCube11
+    3300034: yachi:pPlane5
+    4300000: lian:pCube6
+    4300002: shou:shou:shou:shou:pCube11
+    4300004: pCube7
+    4300006: pSphere1
+    4300008: pSphere2
+    4300010: pCube9
+    4300012: pCube8
+    4300014: eduo:pCube12
+    4300016: pCube12
+    4300018: yachi:pPlane5
+    4300020: lian:pPlane5
+    4300022: pCube16
+    4300024: pCube17
+    4300026: pCube18
+    4300028: pCube6
+    4300030: pCube13
+    4300032: pCube14
+    4300034: pCube15
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

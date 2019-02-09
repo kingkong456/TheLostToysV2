@@ -16,7 +16,8 @@ public class newSlotNode : MonoBehaviour {
 
     public void move_left(float degree)
     {
-        transform.Rotate(new Vector3(0, 0,  leftRight * degree));
+        //transform.Rotate(new Vector3(0, 0,  leftRight * degree));
+        transform.Translate(leftRight * degree, 0, 0);
     }
 
     public void set_NewICon(Sprite icon)

@@ -1,0 +1,129 @@
+fileFormatVersion: 2
+guid: 493fdf78d23f6524ebfcced290e39872
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Kairi_s_Grandma:Kairi_s_Grandma:pPlane1
+    100004: Kairi_s_Grandma:Kairi_s_Grandma:pPlane2
+    100006: Kairi_s_Grandma:Kairi_s_Grandma:transform1
+    100008: Kairi_s_Grandma:Kairi_s_Grandma:transform2
+    100010: Kairi_s_Grandma:Mesh
+    100012: pPlane1
+    100014: pPlane2
+    100016: pPlane3
+    100018: pPlane4
+    100020: transform1
+    100022: transform2
+    400000: //RootNode
+    400002: Kairi_s_Grandma:Kairi_s_Grandma:pPlane1
+    400004: Kairi_s_Grandma:Kairi_s_Grandma:pPlane2
+    400006: Kairi_s_Grandma:Kairi_s_Grandma:transform1
+    400008: Kairi_s_Grandma:Kairi_s_Grandma:transform2
+    400010: Kairi_s_Grandma:Mesh
+    400012: pPlane1
+    400014: pPlane2
+    400016: pPlane3
+    400018: pPlane4
+    400020: transform1
+    400022: transform2
+    2100000: Kairi_s_Grandma_Grand1
+    2100002: Kairi_s_Grandma_Grand
+    2100004: lambert2
+    2100006: Kairi_s_Grandma_Grand3
+    2100008: Kairi_s_Grandma_Grand4
+    2100010: Kairi_s_Grandma_Grand2
+    2100012: Kairi_s_Grandma_Grand6
+    2100014: Kairi_s_Grandma_Grand5
+    2300000: pPlane2
+    2300002: pPlane3
+    2300004: pPlane4
+    3300000: pPlane2
+    3300002: pPlane3
+    3300004: pPlane4
+    4300000: pPlane2
+    4300002: pPlane3
+    4300004: pPlane4
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 1
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

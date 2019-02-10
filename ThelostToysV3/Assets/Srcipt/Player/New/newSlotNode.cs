@@ -7,6 +7,9 @@ public class newSlotNode : MonoBehaviour {
     public Image m_img_icon;
     public int leftRight;
     public GameObject select_current;
+    public Image m_face;
+    public Sprite select_sp;
+    public Sprite unSlect_sp;
     public Transform spawnRemovePoint;
 
     void Start()
@@ -27,11 +30,13 @@ public class newSlotNode : MonoBehaviour {
 
     public void select()
     {
-        select_current.SetActive(true);
+        //select_current.SetActive(true);
+        m_face.sprite = select_sp;
     }
 
     public void unselect()
     {
-        select_current.SetActive(false);
+        //select_current.SetActive(false);
+        m_face.sprite = unSlect_sp;
     }
 }

@@ -137,7 +137,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a08763a9c6744a74eae1d95298419be7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd5f09ee33dac24408274de20918342f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -258,6 +258,9 @@ MonoBehaviour:
   m_img_icon: {fileID: 114649692116167710}
   leftRight: 1
   select_current: {fileID: 1842692775656394}
+  m_face: {fileID: 114056928896624216}
+  select_sp: {fileID: 21300000, guid: a08763a9c6744a74eae1d95298419be7, type: 3}
+  unSlect_sp: {fileID: 21300000, guid: cd5f09ee33dac24408274de20918342f, type: 3}
   spawnRemovePoint: {fileID: 224579787568822122}
 --- !u!198 &198058368776701714
 ParticleSystem:

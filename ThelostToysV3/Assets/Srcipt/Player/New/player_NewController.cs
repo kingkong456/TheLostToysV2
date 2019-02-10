@@ -388,6 +388,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     break;
                 case Toy.toy_type.shile:
                     active_shile();
+                    m_audio.PlayOneShot(m_sound.ShieldBuft);
                     break;
                 default:
                     break;
@@ -422,6 +423,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 case Toy.toy_type.m_attack:
                     my_friend.GetComponent<player_NewController>().PowerUp();
+                    my_friend.GetComponent<AudioSource>().PlayOneShot(m_sound.attackBuft);
                     break;
                 case Toy.toy_type.r_attack:
                     break;
@@ -431,6 +433,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     break;
                 case Toy.toy_type.heal:
                     my_friend.GetComponent<player_NewController>().healing_fromMyfriend();
+                    my_friend.GetComponent<AudioSource>().PlayOneShot(m_sound.Heal);
                     break;
                 case Toy.toy_type.default_type:
                     break;
@@ -439,6 +442,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     break;
                 case Toy.toy_type.shile:
                     my_friend.GetComponent<player_NewController>().active_shile();
+                    my_friend.GetComponent<AudioSource>().PlayOneShot(m_sound.ShieldBuft);
                     break;
                 default:
                     break;
@@ -754,6 +758,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 m_slotManager.add_PlayerToy(collision.gameObject.GetComponent<dropItem>().giveToy);
                 m_audio.PlayOneShot(m_sound.getToy);
+                if(m_slotManager.m_toys.Count == 0)
+                {
+                    Debug.Log("In");
+                    m_slotManager.m_slot[0].select();
+                }
                 Destroy(collision.gameObject);
             }
         }

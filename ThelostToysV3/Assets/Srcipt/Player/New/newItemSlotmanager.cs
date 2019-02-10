@@ -38,7 +38,7 @@ public class newItemSlotmanager : MonoBehaviour {
           //m_slot[current_item] = new_slot.GetComponent<newSlotNode>();
           m_slot.Add(new_slot.GetComponent<newSlotNode>());
           new_slot.GetComponent<newSlotNode>().set_NewICon(toy_i.icon);
-
+            
           for (int i = 0; i < (max_slot - current_item); i++)
           {
               new_slot.GetComponent<newSlotNode>().move_left(slot_moveDegree);

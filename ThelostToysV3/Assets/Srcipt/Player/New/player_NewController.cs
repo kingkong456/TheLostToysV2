@@ -21,6 +21,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private playerData m_data;
         private sound_data m_sound;
         private AudioSource m_audio;
+        public Animator cam1;
+        public Animator cam2;
 
         //camera
         public Transform m_camera;
@@ -777,6 +779,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if(other.gameObject.tag == "ChangeCamera")
             {
                 m_camera.gameObject.GetComponent<Animator>().SetTrigger("Next");
+                //cam1.SetTrigger("Next");
+                //cam2.SetTrigger("Next");
             }
         }
 

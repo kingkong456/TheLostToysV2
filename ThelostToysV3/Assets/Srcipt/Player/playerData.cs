@@ -79,6 +79,8 @@ public class playerData : MonoBehaviour
 
         public void tacking_Dmg(float dmg_get)
         {
+            this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<sound_data>().getHurt);    
+
             hp -= dmg_get;
             my_HpBar.fillAmount = hp / start_hp;
 

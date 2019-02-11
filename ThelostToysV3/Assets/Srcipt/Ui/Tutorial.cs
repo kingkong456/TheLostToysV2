@@ -24,6 +24,7 @@ public class Tutorial : MonoBehaviour {
     public void nextpanel()
     {
         currentPanel++;
+        tutorialPanel.SetActive(true);
         tutorial_panel[currentPanel].SetActive(true);
     }
 }

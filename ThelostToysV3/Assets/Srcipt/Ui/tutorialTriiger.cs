@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class tutorialTriiger : MonoBehaviour {
 
-    void OnTrigerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
+            Debug.Log("in");
             GameObject.FindObjectOfType<Tutorial>().nextpanel();
+            this.gameObject.SetActive(false);
         }
     }
 

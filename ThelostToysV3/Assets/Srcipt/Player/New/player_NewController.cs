@@ -93,6 +93,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public Toy[] toyRandom_byTime;
         private float random_Toy_timer;
 
+        [Header("my skill")]
+        public GameObject attack_tonado;
+        public Collider m_tonadoSkill_col;
+
         //setting varible and player system
         private void Start()
         {
@@ -390,6 +394,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     active_shile();
                     m_audio.PlayOneShot(m_sound.ShieldBuft);
                     break;
+                case Toy.toy_type.attackSkill:
+                    m_animator.SetTrigger("m_skill");
+                    break;
                 default:
                     break;
             }
@@ -448,6 +455,36 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     break;
             } 
         }
+
+        #region my skill operation
+
+        void showTonado()
+        {
+            attack_tonado.SetActive(true);
+        }
+
+        void hideTonado()
+        {
+            Debug.Log("In");
+            attack_tonado.SetActive(false);
+            m_hand.hide_toy(toy_use);
+        }
+
+        void active_tonado()
+        {
+            //attack_tonado.SetActive(true);
+            m_tonadoSkill_col.GetComponent<Collider>().enabled = true;
+            m_audio.PlayOneShot(m_sound.tonadoSkill);
+            m_tonadoSkill_col.GetComponent<axe_col>().dmg = 1;
+        }
+
+        void end_tonado()
+        {
+            //attack_tonado.SetActive(false);
+            m_tonadoSkill_col.GetComponent<Collider>().enabled = false;
+        }
+
+        #endregion
 
         #region power up
 
@@ -803,7 +840,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         #endregion
 
-        #region
+        #region shile
 
         public void active_shile()
         {

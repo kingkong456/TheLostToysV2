@@ -13,7 +13,8 @@ public class Toy : MonoBehaviour {
         fake_target,
         heal,
         jump_boot,
-        shile
+        shile,
+        attackSkill
         ,default_type
     };
 

@@ -40,6 +40,7 @@ public class HpSystem : MonoBehaviour {
     //decrease hp
     public void tacking_Dmg(float dmg)
     {
+        this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<sound_data>().enemy_getHited);
         Debug.Log("Hited");
         hp -= dmg;
         this.GetComponent<Animator>().SetTrigger("getHurt");

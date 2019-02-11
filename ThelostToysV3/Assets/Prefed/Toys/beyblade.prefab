@@ -126,9 +126,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: beyblade
   type: 3
-  icon: {fileID: 21300012, guid: de413f10c2387a044913545411435605, type: 3}
+  icon: {fileID: 21300000, guid: a52c4e485c3efc447a4c71b4b81c37bb, type: 3}
   damge: 0
+  skill_damge: 0
+  mana_skill_use: 0
+  status_icon: {fileID: 0}
+  Skill_icon: {fileID: 0}
+  skill_fx_pototype: {fileID: 0}
   bullet_pototype: {fileID: 0}
+  bullet_skill_pototype: {fileID: 0}
+  exposion_fire_point: {fileID: 0}
   fake_target_pototype: {fileID: 1678750689390540}
   is_canMove: 1
+  heal_point: 0
+  Heal_Fx_pototype: {fileID: 0}
+  duration_boot: 0
+  var_boot_much_more: 0
   poto: {fileID: 0}

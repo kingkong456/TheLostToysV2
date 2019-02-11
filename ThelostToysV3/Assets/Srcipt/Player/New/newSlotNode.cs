@@ -30,13 +30,13 @@ public class newSlotNode : MonoBehaviour {
 
     public void select()
     {
-        //select_current.SetActive(true);
+        select_current.SetActive(true);
         m_face.sprite = select_sp;
     }
 
     public void unselect()
     {
-        //select_current.SetActive(false);
+        select_current.SetActive(false);
         m_face.sprite = unSlect_sp;
     }
 }

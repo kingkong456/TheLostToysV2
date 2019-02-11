@@ -14,8 +14,10 @@ public class sound_data : MonoBehaviour {
     public AudioClip getToy;
     public AudioClip ShieldBuft;
     public AudioClip attackBuft;
+    public AudioClip tonadoSkill;
 
     [Header("Enemy")]
     public AudioClip enemy_sound;
     public AudioClip enemy_die;
+    public AudioClip enemy_getHited;
 }

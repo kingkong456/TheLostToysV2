@@ -21,12 +21,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private playerData m_data;
         private sound_data m_sound;
         private AudioSource m_audio;
-        public Animator cam1;
-        public Animator cam2;
-
+        
         //camera
         public Transform m_camera;
         private Vector3 m_cameraForward;
+        public Animator cam1;
+        public Animator cam2;
 
         //boolean state check
         private bool m_jump;
@@ -778,6 +778,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
             if(other.gameObject.tag == "ChangeCamera")
             {
+                Camera.main.GetComponent<Animator>().SetTrigger("Next");
                 m_camera.gameObject.GetComponent<Animator>().SetTrigger("Next");
                 //cam1.SetTrigger("Next");
                 //cam2.SetTrigger("Next");

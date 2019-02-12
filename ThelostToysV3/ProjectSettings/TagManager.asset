@@ -11,6 +11,7 @@ TagManager:
   - Faker
   - dropingToy
   - ChangeCamera
+  - GoldenToy
   layers:
   - Default
   - TransparentFX

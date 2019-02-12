@@ -67,7 +67,7 @@ public class HpSystem : MonoBehaviour {
     {
         this.GetComponent<Animator>().SetTrigger("die");
         int drop_number = Random.Range(0, toy_droppingData.Length - 1);
-        if((Random.Range(0,3)) != 1)
+        if(Random.Range(0, toy_droppingData.Length - 1) != 1)
         {
             drop_item(drop_number);
         }

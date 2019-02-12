@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
+  m_HorizontalAxis: all_j_buttun_vertical
   m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
+  m_SubmitButton: all_j_buttun_summit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 880056455}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &205438847
@@ -319,7 +319,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Skip
 --- !u!222 &488430449
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -429,7 +429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 701, y: -411}
+  m_AnchoredPosition: {x: 884, y: -528}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880056457
@@ -659,7 +659,7 @@ VideoPlayer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 923743893}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 2b2fe6ba8d6d76e4cbf0fb42ff95eb68, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: d808f036d198fa547959338be6e383ae, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
